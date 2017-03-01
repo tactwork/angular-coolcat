@@ -1,0 +1,29 @@
+<div layout="row" ng-controller="CoolSideNavCtrl">
+  <md-content flex>
+    <ul class="ulart">
+      <li ng-repeat="section in posts | filter:query | orderBy:orderProp"
+          class="thumbnail phone-listing">
+        <a href="#/posts/{{section.id}}" class="thumb"><img ng-src="{{section.imageUrl}}" alt="{{section.name}}"></a>
+        <a href="#/posts/{{section.id}}">{{section.name}}</a>
+        <p>{{section.snippet}}</p>
+      </li>
+    </ul>
+  </md-content>
+  <md-sidenav md-component-id="right" md-is-locked-open="('min-width: 333px')" class="md-sidenav-right">
+    <md-input-container>
+      <label for="sortInput">Sort</label>
+      <input id="sortInput" type="text" ng-model="query" md-sidenav-focus>
+      
+    </md-input-container>
+    <md-input-container>
+      <md-select name="orderProp" ng-model="orderProp">
+        <md-option value="name">BY NAME</md-option>
+        <md-option value="age">age</md-option>
+      </md-select>
+    </md-input-container>
+
+    <md-button ng-click="openLeftMenu()">
+      Open Left Menu
+    </md-button>
+  </md-sidenav>
+</div>
