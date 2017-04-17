@@ -1,0 +1,37 @@
+<md-icon md-svg-icon="{{ul.selected.avatar}}" class="avatar"></md-icon>
+<h2 class="md-display-2">{{ul.selected.name}}</h2>
+<p class="md-headline">{{ul.selected.content}}</p>
+
+<md-button class="md-fab md-primary share" md-no-ink ng-click="ul.makeContact(ul.selected)" >
+  <md-icon md-svg-icon="share"></md-icon>
+</md-button>
+<div ng-controller="ChatCtrl">
+
+  <md-input-container>
+    <md-select name="orderBy" ng-model="orderBy">
+      <md-option value="from">from</md-option>
+      <md-option value="content">content</md-option>
+      <md-option name="timestamp" value="timestamp">timestamp</md-option>
+    </md-select>
+  </md-input-container>
+  <md-input-container>
+    <label for="sortInput">Sort</label>
+    <input id="sortInput" type="text" ng-model="searchText">
+
+  </md-input-container>
+
+  <md-list class="chatbox">
+    <md-list-item class="md-3-line" ng-repeat="message in messages | orderBy:orderBy | filter:searchText" ng-click="null">
+      <div class="md-list-item-text" layout="row">
+        <h3>{{ message.from }}</h3>
+        <h4>{{ message.content }}</h4>
+        <p>{{ message.timestamp }}</p>
+      </div>
+
+    </md-list-item>
+  </md-list>
+  <form ng-submit="addMessage()">
+    <input type="text" ng-model="message">
+    <input type="submit">
+  </form>
+</div>

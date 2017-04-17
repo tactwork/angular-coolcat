@@ -5,8 +5,9 @@
 var coolApp = angular.module('coolApp', [
   'ngRoute',
   'ngMaterial',
+  'ngSanitize',
+  'firebase',
   'coolAnimations',
-
   'coolControllers',
   'coolFilters',
   'coolServices'
@@ -19,15 +20,22 @@ coolApp.config(function($mdThemingProvider) {
 coolApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
-      when('/posts', {
-        templateUrl: 'partials/phone-list.html',
-        controller: 'CoolListCtrl'
+      when('/', {
+        templateUrl: 'partials/home.html',
+        controller: 'PostCtrl'
       }).
-      when('/posts/:postId', {
-        templateUrl: 'partials/phone-detail.html',
-        controller: 'CoolDetailCtrl'
+      // when('/posts', {
+      //   templateUrl: 'partials/phone-list.html',
+      //   controller: 'CoolListCtrl'
+      // }).
+      // when('/posts/:postId', {
+      //   templateUrl: 'partials/phone-detail.html',
+      //   controller: 'CoolDetailCtrl'
+      // }).
+      when('/about', {
+        templateUrl: 'partials/about.html',
       }).
       otherwise({
-        redirectTo: '/posts'
+        redirectTo: '/'
       });
   }]);

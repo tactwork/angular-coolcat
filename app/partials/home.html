@@ -1,0 +1,34 @@
+
+<div>
+
+  <md-input-container>
+    <md-select name="orderBy" ng-model="orderBy">
+      <md-option value="header">header</md-option>
+      <md-option value="content">content</md-option>
+      <md-option name="timestamp" value="timestamp">timestamp</md-option>
+    </md-select>
+  </md-input-container>
+  <md-input-container>
+    <label for="sortInput">Sort</label>
+    <input id="sortInput" type="text" ng-model="searchText">
+
+  </md-input-container>
+
+
+  <article>
+    <!-- arrays are fully sortable and filterable -->
+    <section ng-bind-html="post.content" ng-repeat="post in posts | orderBy:orderBy | filter:searchText">
+      {{ post.content }}
+      <md-subheader>{{ post.name }}</md-subheader><!--You can use md-no-sticky class-->
+      <p class="md-headline">{{ post.snippet }}</p>
+
+      <!-- delete a message using $remove -->
+    </section>
+    <section>
+      <ul>
+        <li ng-repeat="article in articles">{{ article.items.id}}</li>
+      </ul>
+    </section>
+  </article>
+
+</div>

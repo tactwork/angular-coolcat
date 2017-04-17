@@ -3,56 +3,84 @@
 <head>
   <meta charset="utf-8">
   <title>Cloud Arc Starter</title>
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-  <link rel="stylesheet" href="css/app.css">
-  <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+  <link rel="stylesheet" href="styles/angular-material.css" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.14/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.14/angular-route.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.14/angular-resource.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.14/angular-sanitize.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.14/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.14/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.14/angular-messages.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.1/angular-material.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
 
   <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-material/angular-material.js"></script>
-  <script src="bower_components/angular-aria/angular-aria.js"></script>
-  <script src="bower_components/angular-animate/angular-animate.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="bower_components/angular-resource/angular-resource.js"></script>
   <script src="js/app.js"></script>
   <script src="js/animations.js"></script>
   <script src="js/controllers.js"></script>
   <script src="js/filters.js"></script>
   <script src="js/services.js"></script>
 </head>
-<body>
-<!-- start toolbar module -->
-  <md-toolbar class="md-whiteframe-dp3">
-    <div class="md-toolbar-tools">
-      <span>Cloud Arc Starter</span>
-    
-      <!-- fill up the space between left and right area -->
-      <span flex></span>
+<body layout="column">
+  <!-- start toolbar module -->
+  <md-toolbar layout="row" class="md-whiteframe-4dp">
+    <h3>Cloud Arc Starter</h3>
 
-      <md-button class="md-raised md-accent">
-       BUILD ARCH
-      </md-button>
-    </div>
+
+    <md-button class="menu"  ng-click="openLeftMenu()">
+        <md-icon md-svg-icon="menu" ></md-icon>
+    </md-button>
   </md-toolbar>
-<!-- end toolbar module -->
-  
-  <md-sidenav md-component-id="left" md-is-locked-open="gt-sm" class="md-sidenav-left">
-    <md-input-container>
-      <label for="sortInput">Sort</label>
-      <input id="sortInput" type="text" ng-model="query" md-sidenav-focus>
-      
-    </md-input-container>
-    <md-input-container>
-      <md-select name="orderProp" ng-model="orderProp">
-        <md-option value="name">BY NAME</md-option>
-        <md-option value="age">age</md-option>
-      </md-select>
-    </md-input-container>
-  </md-sidenav>
-<!-- end side left -->
-  <div class="view-container">  
-    <section ng-view class="view-frame"></section>
-    </div>
+
+
+  <div flex layout="row">
+    <md-sidenav md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" ng-click="ul.toggleList()" class="md-whiteframe-4dp" >
+
+    </md-sidenav>
+
+
+
+
+    <md-content ng-view flex id="content">
+    </md-content>
+
+
+  </div>
+  <!-- <section layout="row" flex>
+    <md-sidenav md-component-id="left" class="md-sidenav-left">
+      <md-input-container>
+        <label for="sortInput">Sort</label>
+        <input id="sortInput" type="text" ng-model="query" md-sidenav-focus>
+
+      </md-input-container>
+      <md-input-container>
+        <md-select name="orderProp" ng-model="orderProp">
+          <md-option value="name">BY NAME</md-option>
+          <md-option value="age">age</md-option>
+        </md-select>
+      </md-input-container>
+      <md-content ng-controller="CoolSideNavCtrl">
+
+      </md-content>
+    </md-sidenav>
+
+
+  </section> -->
+
+<script>
+  // Initialize the Firebase SDK
+  var config = {
+    apiKey: "AIzaSyAS7oyD6eEg_TLvMVlwiN1WBfHKqoSoyZE",
+    authDomain: "hot-shorts-4e79e.firebaseapp.com",
+    databaseURL: "https://hot-shorts-4e79e.firebaseio.com",
+    storageBucket: "hot-shorts-4e79e.appspot.com",
+    messagingSenderId: "67914260758"
+  };
+  firebase.initializeApp(config);
+</script>
 </body>
 </html>
